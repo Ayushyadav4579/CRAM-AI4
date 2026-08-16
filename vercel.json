@@ -4,12 +4,17 @@
   "installCommand": "pnpm install --no-frozen-lockfile",
   "buildCommand": "pnpm --filter @workspace/cram-ai build",
   "outputDirectory": "artifacts/cram-ai/dist/public",
-  "rewrites": [
+    "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/[...path]"
+    },
     {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ],
+  
   "headers": [
     {
       "source": "/(.*)",
